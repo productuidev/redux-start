@@ -3,7 +3,7 @@ import { useRef } from "react";
 // 위쪽으로 이동
 // TodoForm은 함수를 받아서 보여주는 역할(Presentational Component)
 // Container가 주는 data를 받아서 그냥 보여주거나 실행함
-function TodoForm({ add }) {
+export default function TodoForm({ add }) {
   const inputRef = useRef();
 
   return (
