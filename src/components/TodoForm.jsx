@@ -1,11 +1,8 @@
 import { useRef } from "react";
-import { addTodo } from "../redux/actions";
-import useReduxDispatch from './../hooks/useReduxDispatch';
 
 // uncontrolled components
 export default function TodoForm() {
   const inputRef = useRef();
-  const dispatch = useReduxDispatch();
 
   return (
     <div>
@@ -16,6 +13,6 @@ export default function TodoForm() {
   // 버튼 클릭 시 addTodo 액션
   // dispatch
   function click() {
-    dispatch(addTodo(inputRef.current.value));
+    // dispatch(addTodo(inputRef.current.value));
   }
 }
