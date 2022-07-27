@@ -9,3 +9,4 @@ export default function useReduxDispatch() {
 
   return store.dispatch;
 }
+
