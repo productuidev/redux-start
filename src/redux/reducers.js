@@ -1,4 +1,4 @@
-import { ADD_TODO, COMPLETE_TODO } from './actions';
+import { ADD_TODO, COMPLETE_TODO, SHOW_ALL, SHOW_COMPLETE } from './actions';
 
 // state 모습 구상 (배열)
 // ['코딩', '휴식', ''];
@@ -33,6 +33,20 @@ export function todoApp(previousState = ininitialState, action) {
         }
         return todo;
     })};
+  }
+
+  if (action.type === SHOW_COMPLETE) {
+    return {
+      ...previousState,
+      filter: "COMPLETE",
+    }
+  }
+
+  if (action.type === SHOW_ALL) {
+    return {
+      ...previousState,
+      filter: "ALL",
+    }
   }
 
   return previousState;

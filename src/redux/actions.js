@@ -23,3 +23,15 @@ export function completeTodo(index) {
     index,
   };
 }
+
+export const SHOW_ALL = 'SHOW_ALL';
+export const SHOW_COMPLETE = 'SHOW_COMPLETE';
+
+export function showAll() {
+  return { type: SHOW_ALL }
+}
+
+export function showComplete() {
+  return { type: SHOW_COMPLETE }
+}
+
