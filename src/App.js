@@ -1,12 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect, useContext } from 'react';
-import { addTodo } from './redux/actions';
+// import { addTodo } from './redux/actions';
 import ReduxContext from './contexts/ReduxContext';
 
-function App() {
+function useReduxState() {
   const store = useContext(ReduxContext);
-
   const [state, setState] = useState(store.getState()); // 초기값
 
   useEffect(()=>{
@@ -23,6 +22,14 @@ function App() {
   // index.js에서 다른 store를 다시 넣어주는 경우는 없음
   // 결과적으로 1번만 실행
 
+  return state;
+}
+
+function App() {
+  // 공통 로직
+  // state를 반환하면 그 결과물을 useReudxState로 가져올 수 있음
+  const state = useReduxState();
+
   return (
     <div className="App">
       <header className="App-header">
@@ -35,7 +42,7 @@ function App() {
 
   // 버튼 클릭 시 addTodo 액션
   function click() {
-    store.dispatch(addTodo("todo"));
+    //store.dispatch(addTodo("todo"));
   }
 }
 
