@@ -1,5 +1,4 @@
-import { ADD_TODO } from './actions';
-import { COMPLETE_TODO } from './actions';
+import { ADD_TODO, COMPLETE_TODO } from './actions';
 
 // state 모습 구상 (배열)
 // ['코딩', '휴식', ''];
@@ -19,15 +18,12 @@ export function todoApp(previousState = ininitialState, action) {
   }
 
   // COMPLETE_TODO
-  if(action.text === COMPLETE_TODO) {
+  if(action.type === COMPLETE_TODO) {
     return previousState.map((todo, index)=>{
-      
       if (index === action.index) {
-        return { ...todo, done: true };
+        return { ...todo, done:true };
       }
-
       return todo;
-
     });
   }
 
