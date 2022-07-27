@@ -1,23 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { addTodo } from './redux/actions';
 import ReduxContext from './contexts/ReduxContext';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
 
 
-// 공통 로직
-// dispatch를 반환하면 그 결과물을 useReduxDispatch로 가져올 수 있음
-function useReduxDispatch() {
-  const store = useContext(ReduxContext);
 
-  return store.dispatch;
-}
 
 function App() {
-  // 공통 로직
-  // state를 반환하면 그 결과물을 useReudxState로 가져올 수 있음
   const state = useReduxState();
   const dispatch = useReduxDispatch();
 
