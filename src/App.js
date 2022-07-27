@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState, useEffect, useContext } from 'react';
-// import { addTodo } from './redux/actions';
+import { addTodo } from './redux/actions';
 import ReduxContext from './contexts/ReduxContext';
 
 function useReduxState() {
@@ -25,10 +25,19 @@ function useReduxState() {
   return state;
 }
 
+// 공통 로직
+// dispatch를 반환하면 그 결과물을 useReduxDispatch로 가져올 수 있음
+function useReduxDispatch() {
+  const store = useContext(ReduxContext);
+
+  return store.dispatch;
+}
+
 function App() {
   // 공통 로직
   // state를 반환하면 그 결과물을 useReudxState로 가져올 수 있음
   const state = useReduxState();
+  const dispatch = useReduxDispatch();
 
   return (
     <div className="App">
@@ -41,8 +50,9 @@ function App() {
   );
 
   // 버튼 클릭 시 addTodo 액션
+  // dispatch
   function click() {
-    //store.dispatch(addTodo("todo"));
+    dispatch(addTodo("todo"));
   }
 }
 
