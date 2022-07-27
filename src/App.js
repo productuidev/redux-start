@@ -1,25 +1,42 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState, useEffect, useContext } from 'react';
+import { addTodo } from './redux/actions';
+import ReduxContext from './contexts/ReduxContext';
 
 function App() {
+  const store = useContext(ReduxContext);
+
+  const [state, setState] = useState(store.getState()); // 초기값
+
+  useEffect(()=>{
+    const unsubscribe = store.subscribe(()=>{
+      setState(store.getState());
+    });
+
+    return () => {
+      unsubscribe();
+    };
+  }, [store]); // dependency
+
+  // store가 들어올 때, 다른 store면 다시 실행하는 것이므로 검토해보면
+  // index.js에서 다른 store를 다시 넣어주는 경우는 없음
+  // 결과적으로 1번만 실행
+
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {JSON.stringify(state)} {/* 객체를 JSON 문자열로 변환*/}
+        <button onClick={click}>추가</button>
       </header>
     </div>
   );
+
+  // 버튼 클릭 시 addTodo 액션
+  function click() {
+    store.dispatch(addTodo("todo"));
+  }
 }
 
 export default App;
