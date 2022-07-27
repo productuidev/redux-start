@@ -7,18 +7,24 @@ import store from './redux/store';
 import { addTodo } from './redux/actions';
 
 // store 상태 구독
-const unsubscribe = store.subscribe(()=>{
+store.subscribe(()=>{
   console.log(store.getState());
 });
+
+store.dispatch(addTodo('할일'));
+
+// const unsubscribe = store.subscribe(()=>{
+//   console.log(store.getState());
+// });
 
 // console.log(store);
 
 // store 상태 변경 시키기
-store.dispatch(addTodo("coding"));
-store.dispatch(addTodo("reading"));
-store.dispatch(addTodo("eating"));
+// store.dispatch(addTodo("coding"));
+// store.dispatch(addTodo("reading"));
+// store.dispatch(addTodo("eating"));
 
-unsubscribe();
+// unsubscribe();
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
