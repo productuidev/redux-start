@@ -1,6 +1,4 @@
 import { useRef } from "react";
-import { connect } from 'react-redux';
-import { addTodo } from "../redux/actions";
 
 // 위쪽으로 이동
 // TodoForm은 함수를 받아서 보여주는 역할(Presentational Component)
@@ -21,16 +19,3 @@ function TodoForm({ add }) {
     add(inputRef.current.value);
   }
 }
-
-// Container = Smart Component로 역할 분리
-// Store와 Presentatinal Component를 이어주는 역할 = connect
-export default connect(
-  (state) => ({}),
-
-  // todos를 실행하는 로직
-  (dispatch) => ({
-    add: (text) => {
-      dispatch(addTodo(text));
-    }
-  })
-)(TodoForm);
