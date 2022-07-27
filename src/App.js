@@ -1,13 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
-import { useContext } from 'react';
 import { addTodo } from './redux/actions';
-import ReduxContext from './contexts/ReduxContext';
+import useReduxState from './hooks/useReduxState';
+import useReduxDispatch from './hooks/useReduxDispatch';
 import TodoList from './components/TodoList';
 import TodoForm from './components/TodoForm';
-
-
-
 
 function App() {
   const state = useReduxState();
