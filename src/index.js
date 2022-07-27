@@ -6,12 +6,20 @@ import reportWebVitals from './reportWebVitals';
 import store from './redux/store';
 import { addTodo } from './redux/actions';
 
-console.log(store);
-console.log(store.getState());
+// store 상태 구독
+const unsubscribe = store.subscribe(()=>{
+  console.log(store.getState());
+});
+
+// console.log(store);
 
 // store 상태 변경 시키기
 store.dispatch(addTodo("coding"));
-console.log(store.getState());
+store.dispatch(addTodo("reading"));
+store.dispatch(addTodo("eating"));
+
+unsubscribe();
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
